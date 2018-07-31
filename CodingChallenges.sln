@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MaxSubArray", "MaxSubArray\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SumPairArray", "SumPairArray\SumPairArray.vcxproj", "{7D22D09E-3172-4B1C-BBEB-54AE07BC476B}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ShortestPath", "ShortestPath\ShortestPath.vcxproj", "{4CB7F14A-8CF3-442A-8758-745659F3BDF0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{7D22D09E-3172-4B1C-BBEB-54AE07BC476B}.Release|x64.Build.0 = Release|x64
 		{7D22D09E-3172-4B1C-BBEB-54AE07BC476B}.Release|x86.ActiveCfg = Release|Win32
 		{7D22D09E-3172-4B1C-BBEB-54AE07BC476B}.Release|x86.Build.0 = Release|Win32
+		{4CB7F14A-8CF3-442A-8758-745659F3BDF0}.Debug|x64.ActiveCfg = Debug|x64
+		{4CB7F14A-8CF3-442A-8758-745659F3BDF0}.Debug|x64.Build.0 = Debug|x64
+		{4CB7F14A-8CF3-442A-8758-745659F3BDF0}.Debug|x86.ActiveCfg = Debug|Win32
+		{4CB7F14A-8CF3-442A-8758-745659F3BDF0}.Debug|x86.Build.0 = Debug|Win32
+		{4CB7F14A-8CF3-442A-8758-745659F3BDF0}.Release|x64.ActiveCfg = Release|x64
+		{4CB7F14A-8CF3-442A-8758-745659F3BDF0}.Release|x64.Build.0 = Release|x64
+		{4CB7F14A-8CF3-442A-8758-745659F3BDF0}.Release|x86.ActiveCfg = Release|Win32
+		{4CB7F14A-8CF3-442A-8758-745659F3BDF0}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
