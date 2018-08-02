@@ -10,19 +10,25 @@ Tree::Tree()
 }
 
 Tree::~Tree()
-{
+{	
 	root.reset();
+}
+
+void Tree::remove(int const &value)
+{
+	std::cout << "Removing " << value << std::endl;
+	remove(value, root);
 }
 
 void Tree::isTreeEmpty() const
 {
-	std::cout << isNodeEmpty(root) << std::endl;
+	std::cout << "Tree empty? " << isNodeEmpty(root) << std::endl;
 }
 
-void Tree::contains(int const & value) const
+void Tree::contains(int const &value) const
 {
 	
-	std::cout << contains(value, root) << std::endl;
+	std::cout << "Contain " << value << "? " << contains(value, root) << std::endl;
 }
 
 void Tree::findMin() const
@@ -34,27 +40,36 @@ void Tree::findMin() const
 
 void Tree::findMax() const
 {
+	int result = findMax(root);
+
+	std::cout << "Max is " << result << std::endl;
 }
 
 void Tree::insert(int const &value)
 {
+	std::cout << "Inserting " << value << std::endl;
 	insert(value, root);
 }
 
-void Tree::preOrder()
+void Tree::preOrder() const
 {
+	std::cout << "PreOrder: ";
 	preOrder(root);
 	std::cout << std::endl;
 }
 
-void Tree::inOrder()
+void Tree::inOrder() const
 {
+	std::cout << "InOrder: ";
 	inOrder(root);
+	std::cout << std::endl;
 }
 
-void Tree::postOrder()
+void Tree::postOrder() const
 {
+	std::cout << "PostOrder: ";
 	postOrder(root);
+	std::cout << std::endl;
 }
 
 /*----------------------------------------------------------------------/
@@ -79,20 +94,16 @@ bool Tree::contains(int const &value, pNode const &node) const
 	else
 	{
 		contains(value, node->right);
-	}
+	}	
 }
 
-
-
-
-
-int &Tree::findMin(pNode const &node) const
+int &Tree::findMin(pNode const &node) const 
 {
 	auto temp = node.get();
 
-	if (isNodeEmpty(temp))
+	if (!isNodeEmpty(temp))
 	{
-		while (temp->left != nullptr)
+		while (!isNodeEmpty(temp->left))
 		{
 			temp = temp->left.get();
 		}
@@ -101,19 +112,57 @@ int &Tree::findMin(pNode const &node) const
 	return temp->data;
 }
 
-int Tree::findMax(pNode const &node) const
+int &Tree::findMax(pNode const &node) const
 {
 	auto temp = node.get();
 
-	if (isNodeEmpty(temp))
+	if (!isNodeEmpty(temp))
 	{
-		while (temp->right != nullptr)
+		while (!isNodeEmpty(temp->right))
 		{
 			temp = temp->right.get();
 		}
 	}
 
 	return temp->data;
+}
+
+void Tree::remove(int const &value, pNode &node)
+{
+	if (isNodeEmpty(node))
+	{
+		return;
+	}
+
+	if (value < node->data)
+	{
+		remove(value, node->left);
+	}
+	else if (value > node->data)
+	{
+		remove(value, node->right);
+	}
+	else
+	{
+		// no children
+		if (isNodeEmpty(node->left) && isNodeEmpty(node->right))
+		{
+			node.reset();
+		}
+		// two children 
+		else if (!isNodeEmpty(node->left) && !isNodeEmpty(node->right))
+		{			
+			node->data = findMin(node->right);
+			remove(node->data, node->right);
+		}
+		// one child
+		else
+		{
+			auto tempNode = node.get();
+			node = (isNodeEmpty(tempNode->left)) ? std::move(tempNode->right) : std::move(tempNode->left);
+		}
+	}
+	
 }
 
 void Tree::insert(int const &value, pNode &node)
@@ -131,8 +180,6 @@ void Tree::insert(int const &value, pNode &node)
 		insert(value, node->right);
 	}
 }
-
-
 
 void Tree::preOrder(pNode const &node) const
 {

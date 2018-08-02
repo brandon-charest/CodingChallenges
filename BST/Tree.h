@@ -11,14 +11,15 @@ public:
 	Tree();
 	~Tree();
 	
+	void remove(int const &value);
 	void isTreeEmpty() const;
 	void contains(int const &value) const;
 	void findMin() const;
 	void findMax() const;
 	void insert(int const &value);
-	void preOrder();
-	void inOrder();
-	void postOrder();
+	void preOrder() const;
+	void inOrder() const;
+	void postOrder() const;
 	
 
 private:
@@ -46,8 +47,9 @@ private:
 	bool contains(int const &value, pNode const &node) const;
 
 	int &findMin(pNode const &node) const;
-	int findMax(pNode const &node) const;
+	int &findMax(pNode const &node) const;
 
+	void remove(int const &value, pNode &node);
 	void insert(int const &value, pNode &node);
 	void preOrder(pNode const &node) const;
 	void inOrder(pNode const &node) const;
