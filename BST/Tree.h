@@ -1,44 +1,66 @@
 #pragma once
 #include <iostream>
-struct Node
-{
-	int data;
-	Node *left;
-	Node *right;	
-	Node(int x) : data(x), left(nullptr), right(nullptr) {};
-};
+#include <memory>
+
+
 
 class Tree
 {	
+
 public:
 	Tree();
 	~Tree();
 	
-
-	int getMin();
-	int getMax();
-
-	bool isEmpty();
-	bool contains(int);
-
-	void insert(int);
-	void clearTree();
-	void print();
-	void remove(int);
+	void isTreeEmpty() const;
+	void contains(int const &value) const;
+	void findMin() const;
+	void findMax() const;
+	void insert(int const &value);
+	void preOrder();
+	void inOrder();
+	void postOrder();
 	
 
-
 private:
-	Node *root;
 
-	int findMinNode(Node*);
-	int findMaxNode(Node*);
-	Node *findNode(int, Node*);
+	struct Node;
+	using pNode = std::unique_ptr<Node>;
+	struct Node
+	{
+		int data;
+		pNode left;
+		pNode right;
+		Node(int const &value) : data(value) {};
 
-	Node *insert_node(int, Node*);
-	void destroy_tree(Node*);
-	void preOrder(Node*);
-	void inOrder(Node*);
-	void postOrder(Node*);
+		static pNode from(int const &value)
+		{
+			return pNode(new Node(value));
+		}
+	};
+
+	pNode root;
+
+
+	template<typename T>
+	bool isNodeEmpty(T const &node) const;
+	bool contains(int const &value, pNode const &node) const;
+
+	int &findMin(pNode const &node) const;
+	int findMax(pNode const &node) const;
+
+	void insert(int const &value, pNode &node);
+	void preOrder(pNode const &node) const;
+	void inOrder(pNode const &node) const;
+	void postOrder(pNode const &node) const;
+
+	
+
+	
+	
 };
 
+template<typename T>
+inline bool Tree::isNodeEmpty(T const &node) const
+{
+	return node == nullptr;
+}

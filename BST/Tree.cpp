@@ -1,138 +1,165 @@
 #include "Tree.h"
+/*----------------------------------------------------------------------/
+/                         Public functions                              /
+/*---------------------------------------------------------------------*/
 
-
-
-Tree::Tree() : root(NULL) {};
+Tree::Tree()
+{
+	std::cout << std::boolalpha;
+	root = NULL;
+}
 
 Tree::~Tree()
 {
-	destroy_tree(root);
+	root.reset();
 }
 
-int Tree::getMin()
+void Tree::isTreeEmpty() const
 {
-	return findMinNode(root);
+	std::cout << isNodeEmpty(root) << std::endl;
 }
 
-int Tree::getMax()
+void Tree::contains(int const & value) const
 {
-	return 0;
+	
+	std::cout << contains(value, root) << std::endl;
 }
 
-bool Tree::isEmpty()
-{
-	return root == nullptr;
-}
-
-bool Tree::contains(int x)
+void Tree::findMin() const
 {	
-	return findNode(x, root) = NULL ? false : true;
+	int result = findMin(root);
+
+	std::cout << "Min is " << result << std::endl;
 }
 
-void Tree::insert(int data)
-{
-	root = insert_node(data, root);
-}
-
-void Tree::clearTree()
+void Tree::findMax() const
 {
 }
 
-void Tree::print()
+void Tree::insert(int const &value)
 {
+	insert(value, root);
 }
 
-void Tree::remove(int)
+void Tree::preOrder()
 {
+	preOrder(root);
+	std::cout << std::endl;
 }
 
-int Tree::findMinNode(Node *tree)
+void Tree::inOrder()
 {
-	if (tree == NULL)
+	inOrder(root);
+}
+
+void Tree::postOrder()
+{
+	postOrder(root);
+}
+
+/*----------------------------------------------------------------------/
+/                         Private functions                             /
+/*---------------------------------------------------------------------*/
+
+bool Tree::contains(int const &value, pNode const &node) const
+{
+	if (isNodeEmpty(node))
 	{
-		return NULL;
+		return false;
 	}
 
-	while (tree->left != NULL)
+	if (value == node->data)
 	{
-		tree = tree->left;
+		return true;
 	}
-
-	return tree->data;
-}
-
-int Tree::findMaxNode(Node *tree)
-{
-	if (tree == NULL)
+	else if (value < node->data)
 	{
-		return NULL;
-	}
-
-	while (tree->right != NULL)
-	{
-		tree = tree->right;
-	}
-
-	return tree->data;
-}
-
-Node *Tree::findNode(int data, Node *node)
-{
-	if (data = node->data)
-	{
-		return node;
-	}
-	else if (data > node->data)
-	{
-		node->right = insert_node(data, node->right);
-	}
-	else if (data < node->data)
-	{
-		node->left = insert_node(data, node->left);
+		contains(value, node->left);
 	}
 	else
 	{
-		return NULL;
+		contains(value, node->right);
+	}
+}
+
+
+
+
+
+int &Tree::findMin(pNode const &node) const
+{
+	auto temp = node.get();
+
+	if (isNodeEmpty(temp))
+	{
+		while (temp->left != nullptr)
+		{
+			temp = temp->left.get();
+		}
+	}
+
+	return temp->data;
+}
+
+int Tree::findMax(pNode const &node) const
+{
+	auto temp = node.get();
+
+	if (isNodeEmpty(temp))
+	{
+		while (temp->right != nullptr)
+		{
+			temp = temp->right.get();
+		}
+	}
+
+	return temp->data;
+}
+
+void Tree::insert(int const &value, pNode &node)
+{
+	if (isNodeEmpty(node))
+	{
+		node = std::move(node->from(value));
+	}
+	else if (value < node->data)
+	{
+		insert(value, node->left);
+	}
+	else
+	{
+		insert(value, node->right);
+	}
+}
+
+
+
+void Tree::preOrder(pNode const &node) const
+{
+	if (!isNodeEmpty(node))
+	{
+		std::cout << node->data << " ";
+		preOrder(node->left);
+		preOrder(node->right);
 	}	
 }
 
-Node *Tree::insert_node(int data, Node *node)
+void Tree::inOrder(pNode const & node) const
 {
-	if (node == NULL)
-	{
-		node = new Node(data);
-	}
-	else if (data > node->data)
-	{
-		node->right = insert_node(data, node->right);
-	}
-	else
-	{
-		node->left = insert_node(data, node->left);
-	}
-
-	return node;
+	if (!isNodeEmpty(node))
+	{		
+		preOrder(node->left);
+		std::cout << node->data << " ";
+		preOrder(node->right);
+	}	
 }
 
-void Tree::destroy_tree(Node *tree)
+void Tree::postOrder(pNode const & node) const
 {
-	if (tree != NULL)
-	{
-		destroy_tree(tree->left);
-		destroy_tree(tree->right);
-
-		delete tree;
-	}
-}
-
-void Tree::preOrder(Node *)
-{
-}
-
-void Tree::inOrder(Node *)
-{
-}
-
-void Tree::postOrder(Node *)
-{
+	if (!isNodeEmpty(node))
+	{		
+		preOrder(node->left);
+		preOrder(node->right);
+		std::cout << node->data << " ";
+	}	
 }
