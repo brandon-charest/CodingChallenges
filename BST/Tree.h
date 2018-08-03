@@ -21,13 +21,11 @@ public:
 	void inOrder() const;
 	void postOrder() const;
 	
-
-private:
-
+protected:
 	struct Node;
 	using pNode = std::unique_ptr<Node>;
 	struct Node
-	{
+	{	
 		int data;
 		pNode left;
 		pNode right;
@@ -38,12 +36,12 @@ private:
 			return pNode(new Node(value));
 		}
 	};
-
 	pNode root;
-
 
 	template<typename T>
 	bool isNodeEmpty(T const &node) const;
+
+private:
 	bool contains(int const &value, pNode const &node) const;
 
 	int &findMin(pNode const &node) const;
@@ -53,12 +51,7 @@ private:
 	void insert(int const &value, pNode &node);
 	void preOrder(pNode const &node) const;
 	void inOrder(pNode const &node) const;
-	void postOrder(pNode const &node) const;
-
-	
-
-	
-	
+	void postOrder(pNode const &node) const;	
 };
 
 template<typename T>

@@ -3,7 +3,7 @@
 int main()
 {
 
-	Tree t;
+	Tree t;	
 
 	t.insert(3);
 	t.insert(5);
