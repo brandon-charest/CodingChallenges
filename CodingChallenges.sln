@@ -17,6 +17,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AVL", "AVL\AVL.vcxproj", "{
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FloodFill", "FloodFill\FloodFill.vcxproj", "{736ABE7A-A39F-4720-B381-C65A9D92EC10}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DutchFlag", "DutchFlag\DutchFlag.vcxproj", "{7542EEBF-884D-4C53-AFD0-9169A5D8B8A5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -97,6 +99,16 @@ Global
 		{736ABE7A-A39F-4720-B381-C65A9D92EC10}.Release|x64.Build.0 = Release|x64
 		{736ABE7A-A39F-4720-B381-C65A9D92EC10}.Release|x86.ActiveCfg = Release|Win32
 		{736ABE7A-A39F-4720-B381-C65A9D92EC10}.Release|x86.Build.0 = Release|Win32
+		{7542EEBF-884D-4C53-AFD0-9169A5D8B8A5}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{7542EEBF-884D-4C53-AFD0-9169A5D8B8A5}.Debug|x64.ActiveCfg = Debug|x64
+		{7542EEBF-884D-4C53-AFD0-9169A5D8B8A5}.Debug|x64.Build.0 = Debug|x64
+		{7542EEBF-884D-4C53-AFD0-9169A5D8B8A5}.Debug|x86.ActiveCfg = Debug|Win32
+		{7542EEBF-884D-4C53-AFD0-9169A5D8B8A5}.Debug|x86.Build.0 = Debug|Win32
+		{7542EEBF-884D-4C53-AFD0-9169A5D8B8A5}.Release|Any CPU.ActiveCfg = Release|Win32
+		{7542EEBF-884D-4C53-AFD0-9169A5D8B8A5}.Release|x64.ActiveCfg = Release|x64
+		{7542EEBF-884D-4C53-AFD0-9169A5D8B8A5}.Release|x64.Build.0 = Release|x64
+		{7542EEBF-884D-4C53-AFD0-9169A5D8B8A5}.Release|x86.ActiveCfg = Release|Win32
+		{7542EEBF-884D-4C53-AFD0-9169A5D8B8A5}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
