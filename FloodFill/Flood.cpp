@@ -33,7 +33,7 @@ vvi Flood::floodFill(vvi &image, int const row, int const col, int const newColo
 
 void Flood::fill(vvi &image, int const row, int const col, int const oldColor, int const newColor)
 {
-	if (row >= 0 && col >= 0 && row < image.size() && col < image[0].size() && image[row][col] == oldColor)
+	if (row >= 0 && col >= 0 && row < image.size() && col < image[0].size() && image[row][col] == oldColor && image[row][col] != newColor)
 	{
 		image[row][col] = newColor;
 		fill(image, row + 1, col, oldColor, newColor);
