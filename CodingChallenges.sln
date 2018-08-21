@@ -21,6 +21,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DutchFlag", "DutchFlag\Dutc
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "IslandPerimeter", "IslandPerimeter\IslandPerimeter.vcxproj", "{6D4692A5-EAA4-475B-A5AA-A6E9B14059B4}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ToLowerCase", "ToLowerCase\ToLowerCase.vcxproj", "{0F85154C-A97E-4D58-8237-61EEC3D24C78}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -121,6 +123,16 @@ Global
 		{6D4692A5-EAA4-475B-A5AA-A6E9B14059B4}.Release|x64.Build.0 = Release|x64
 		{6D4692A5-EAA4-475B-A5AA-A6E9B14059B4}.Release|x86.ActiveCfg = Release|Win32
 		{6D4692A5-EAA4-475B-A5AA-A6E9B14059B4}.Release|x86.Build.0 = Release|Win32
+		{0F85154C-A97E-4D58-8237-61EEC3D24C78}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{0F85154C-A97E-4D58-8237-61EEC3D24C78}.Debug|x64.ActiveCfg = Debug|x64
+		{0F85154C-A97E-4D58-8237-61EEC3D24C78}.Debug|x64.Build.0 = Debug|x64
+		{0F85154C-A97E-4D58-8237-61EEC3D24C78}.Debug|x86.ActiveCfg = Debug|Win32
+		{0F85154C-A97E-4D58-8237-61EEC3D24C78}.Debug|x86.Build.0 = Debug|Win32
+		{0F85154C-A97E-4D58-8237-61EEC3D24C78}.Release|Any CPU.ActiveCfg = Release|Win32
+		{0F85154C-A97E-4D58-8237-61EEC3D24C78}.Release|x64.ActiveCfg = Release|x64
+		{0F85154C-A97E-4D58-8237-61EEC3D24C78}.Release|x64.Build.0 = Release|x64
+		{0F85154C-A97E-4D58-8237-61EEC3D24C78}.Release|x86.ActiveCfg = Release|Win32
+		{0F85154C-A97E-4D58-8237-61EEC3D24C78}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
