@@ -11,9 +11,19 @@ Example:
 
 Answer: 16
 */
+#include "IslandPerimeter.h"
+#include <iostream>
 
 int main()
 {
+	IslandPerimeter islandPerimeter;
+	vvi island = {{0, 1, 0, 0},
+				 { 1, 1, 1, 0},
+				 { 0, 1, 0, 0},
+				 { 1, 1, 0, 0}};
+	
+
+	std::cout << islandPerimeter.findPerimeter(island) << std::endl;
 
 	return 0;
 }
