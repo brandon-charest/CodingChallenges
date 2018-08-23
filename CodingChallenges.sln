@@ -23,6 +23,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "IslandPerimeter", "IslandPe
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ToLowerCase", "ToLowerCase\ToLowerCase.vcxproj", "{0F85154C-A97E-4D58-8237-61EEC3D24C78}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MiddleOfLinkedList", "MiddleOfLinkedList\MiddleOfLinkedList.vcxproj", "{C4F273C7-8C77-4105-AA81-44F1B533EFFC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -133,6 +135,16 @@ Global
 		{0F85154C-A97E-4D58-8237-61EEC3D24C78}.Release|x64.Build.0 = Release|x64
 		{0F85154C-A97E-4D58-8237-61EEC3D24C78}.Release|x86.ActiveCfg = Release|Win32
 		{0F85154C-A97E-4D58-8237-61EEC3D24C78}.Release|x86.Build.0 = Release|Win32
+		{C4F273C7-8C77-4105-AA81-44F1B533EFFC}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{C4F273C7-8C77-4105-AA81-44F1B533EFFC}.Debug|x64.ActiveCfg = Debug|x64
+		{C4F273C7-8C77-4105-AA81-44F1B533EFFC}.Debug|x64.Build.0 = Debug|x64
+		{C4F273C7-8C77-4105-AA81-44F1B533EFFC}.Debug|x86.ActiveCfg = Debug|Win32
+		{C4F273C7-8C77-4105-AA81-44F1B533EFFC}.Debug|x86.Build.0 = Debug|Win32
+		{C4F273C7-8C77-4105-AA81-44F1B533EFFC}.Release|Any CPU.ActiveCfg = Release|Win32
+		{C4F273C7-8C77-4105-AA81-44F1B533EFFC}.Release|x64.ActiveCfg = Release|x64
+		{C4F273C7-8C77-4105-AA81-44F1B533EFFC}.Release|x64.Build.0 = Release|x64
+		{C4F273C7-8C77-4105-AA81-44F1B533EFFC}.Release|x86.ActiveCfg = Release|Win32
+		{C4F273C7-8C77-4105-AA81-44F1B533EFFC}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
