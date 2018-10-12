@@ -1,5 +1,5 @@
 #include "spiral.h"
-
+#include <iostream>
 int main()
 {
 	Spiral s;

@@ -34,6 +34,12 @@ private:
 	void topToBottom();
 	void bottomToTop();
 
+	void leftToRightCounter();
+	void rightToLeftCounter();
+	void topToBottomCounter();
+	void bottomToTopCounter();
+
+
 	vvi generateMatrix(int);
 	void clockwiseSpiral(vvi);
 	void counterSpiral(vvi);

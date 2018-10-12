@@ -27,7 +27,20 @@ void Spiral::clockwiseSpiral(vvi)
 
 void Spiral::counterSpiral(vvi)
 {
-	//
+	while (top <= bottom && left <= right && current <= max)
+	{
+		// top -> bottom
+		topToBottomCounter();
+
+		// left -> right			
+		leftToRightCounter();
+
+		// bottom -> top	
+		bottomToTopCounter();		
+
+		// right -> left
+		rightToLeft();
+	}
 }
 
 void Spiral::spiral(int num, Direction direction)
@@ -47,6 +60,7 @@ void Spiral::spiral(int num, Direction direction)
 		clockwiseSpiral(matrix);
 		break;
 	case Spiral::CounterClockWise:
+		counterSpiral(matrix);
 		break;
 	default:
 		break;
@@ -55,7 +69,6 @@ void Spiral::spiral(int num, Direction direction)
 	Spiral::print(matrix);
 
 }
-
 
 void Spiral::leftToRight()
 {
@@ -93,13 +106,57 @@ void Spiral::bottomToTop()
 	left++;
 }
 
+void Spiral::leftToRightCounter()
+{
+	for (int i = left; i <= right; i++)
+	{
+		matrix[bottom][i] = current++;
+	}
+	bottom--;
+}
+
+void Spiral::rightToLeftCounter()
+{
+	for (int k = right; k >= left; k--)
+	{
+		matrix[top][k] = current++;
+	}
+	top++;
+}
+
+void Spiral::topToBottomCounter()
+{
+	for (int j = top; j <= bottom; j++)
+	{
+		matrix[j][left] = current++;
+	}
+	left++;
+}
+
+void Spiral::bottomToTopCounter()
+{
+	for (int l = bottom; l >= top; l--)
+	{
+		matrix[l][right] = current++;
+	}
+	right--;
+}
+
 void Spiral::print(vvi matrix)
 {
 	for (auto const &row : matrix)
 	{
 		for (auto const &col : row)
 		{
-			std::cout << col << " ";
+			if (col <= 9)
+			{
+				std::cout << " " << col << " ";
+			}
+			else
+			{
+				std::cout << col << " ";
+
+			}
 		}
 
 		std::cout << '\n';
