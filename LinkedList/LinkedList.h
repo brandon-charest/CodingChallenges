@@ -33,7 +33,12 @@ private:
 	Node<T> *m_tail;	
 	int m_size;
 
+	Node<T>* mergeSort(Node<T> *head);
+	Node<T>* merge(Node<T> *node1, Node<T> *node2);
+	Node<T>* getMiddle(Node<T> *head);
+
 	static bool isNodeEmpty(Node<T> *node);
+
 };
 
 
@@ -188,6 +193,73 @@ int LinkedList<T>::size() const
 template<class T>
 void LinkedList<T>::sort()
 {
+	m_head = mergeSort(m_head);
+}
+
+template <class T>
+Node<T>* LinkedList<T>::mergeSort(Node<T> *head)
+{
+	if(head == nullptr || head->next == nullptr)
+	{
+		return head;
+	}
+
+	Node<T> *middleNode = getMiddle(head);
+	Node<T> *half = middleNode->next;
+	middleNode->next = nullptr;
+
+
+	return merge(mergeSort(head), mergeSort(half));
+
+}
+
+template <class T>
+Node<T>* LinkedList<T>::merge(Node<T> *node1, Node<T> *node2)
+{
+	Node<T> *temp;
+
+	if(node1 == nullptr)
+	{
+		return node2;
+	}
+
+	if(node2 == nullptr)
+	{
+		return node1;
+	}
+
+
+	if(node1->val < node2->val)
+	{
+		temp = node1;
+		temp->next = merge(node1->next, node2);
+	}
+	else
+	{
+		temp = node2;
+		temp->next = merge(node1, node2->next);
+	}
+
+	return temp;
+}
+
+template <class T>
+Node<T>* LinkedList<T>::getMiddle(Node<T> *head)
+{
+	if(head == nullptr)
+	{
+		return head;
+	}
+
+	Node<T> *slow = head;
+	Node<T> *fast = head;
+
+	while(fast->next != nullptr && fast->next->next != nullptr)
+	{
+		slow = slow->next;
+		fast = fast->next->next;
+	}
+	return slow;
 }
 
 template <class T>
@@ -195,4 +267,6 @@ bool LinkedList<T>::isNodeEmpty(Node<T>* node)
 {
 	return node == nullptr;
 }
+
+
 

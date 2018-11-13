@@ -31,5 +31,10 @@ int main()
 	list.removeNode(2);
 	std::cout << "size: " << list.size() << std::endl;
 	list.print();
+
+	std::cout << "Sort LinkedList." << std::endl;
+	list.sort();
+	list.print();
+
 	return 0;
 }
