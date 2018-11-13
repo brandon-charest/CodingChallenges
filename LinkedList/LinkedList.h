@@ -25,20 +25,20 @@ public:
 	void print();
 	int size() const;
 	void sort();
+	void reverse();
 
 private:
 
-	
 	Node<T> *m_head;
 	Node<T> *m_tail;	
 	int m_size;
 
+	Node<T>* reverse(Node<T> *head);
 	Node<T>* mergeSort(Node<T> *head);
 	Node<T>* merge(Node<T> *node1, Node<T> *node2);
 	Node<T>* getMiddle(Node<T> *head);
 
 	static bool isNodeEmpty(Node<T> *node);
-
 };
 
 
@@ -194,6 +194,35 @@ template<class T>
 void LinkedList<T>::sort()
 {
 	m_head = mergeSort(m_head);
+}
+
+template <class T>
+void LinkedList<T>::reverse()
+{
+	m_head = reverse(m_head);
+}
+
+template <class T>
+Node<T>* LinkedList<T>::reverse(Node<T>* head)
+{
+	if(head == nullptr)
+	{
+		return head;
+	}
+
+	Node<T> *previous = nullptr;
+	Node<T> *next = nullptr;
+	Node<T>* current = head;
+
+	while(current != nullptr)
+	{
+		next = current->next;
+		current->next = previous;
+		previous = current;
+		current = next;
+	}
+	
+	return head = previous;
 }
 
 template <class T>

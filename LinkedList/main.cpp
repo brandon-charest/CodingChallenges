@@ -36,5 +36,10 @@ int main()
 	list.sort();
 	list.print();
 
+
+	std::cout << "Reverse LinkedList." << std::endl;
+	list.reverse();
+	list.print();
+
 	return 0;
 }
