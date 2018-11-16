@@ -42,8 +42,9 @@ void printTree(TreeNode const *node)
 		printTree(node->right);
 	}
 }
+// First attempt. Start
 
-void add_node(TreeNode *&node, int val)
+/*void add_node(TreeNode *&node, int val)
 {
 	if(node == nullptr)
 	{
@@ -60,27 +61,27 @@ void add_node(TreeNode *&node, int val)
 }
 
 
-TreeNode* constructMaximumBinaryTree(std::vector<int>& nums) 
+TreeNode* constructMaximumBinaryTree(std::vector<int>& nums)
 {
-	if(nums.empty())
+	if (nums.empty())
 	{
 		return nullptr;
 	}
 
-	auto const maxNum =std::distance(nums.begin(),std::max_element(nums.begin(), nums.end()));
+	auto const maxNum = std::distance(nums.begin(), std::max_element(nums.begin(), nums.end()));
 
 	auto *maxTree = new TreeNode(nums[maxNum]);
 
 	std::vector<int> leftSide = {};
 	std::vector<int> rightSide = {};
 
-	for(auto i = 0; i < nums.size(); i++)
+	for (auto i = 0; i < nums.size(); i++)
 	{
-		if(i < maxNum)
+		if (i < maxNum)
 		{
 			leftSide.push_back(nums[i]);
 		}
-		else if(i > maxNum)
+		else if (i > maxNum)
 		{
 			rightSide.push_back(nums[i]);
 		}
@@ -100,6 +101,31 @@ TreeNode* constructMaximumBinaryTree(std::vector<int>& nums)
 		add_node(maxTree->right, value);
 	}
 	return maxTree;
+}*/
+
+//First attempt end
+
+
+TreeNode* constructTree(std::vector<int> &nums, int start, int end)
+{
+	if(start > end)
+	{
+		return nullptr;
+	}
+
+	const auto maxNumberIndex = std::distance(nums.begin(), std::max_element(nums.begin() + start, nums.begin() + end + 1));
+
+	TreeNode *root = new TreeNode(nums[maxNumberIndex]);
+	root->left = constructTree(nums, start, maxNumberIndex - 1);
+	root->right = constructTree(nums, maxNumberIndex + 1, end);
+
+	return root;
+
+}
+
+TreeNode* constructMaximumBinaryTree(std::vector<int>& nums)
+{
+	return constructTree(nums, 0, nums.size() - 1);
 }
 
 
