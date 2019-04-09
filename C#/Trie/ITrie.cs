@@ -9,6 +9,6 @@ namespace Trie
     public interface ITrie<T>
     {
         IEnumerable<T> Retrieve(string query);
-        void add(string key, T value);
+        void Add(string key, T value);
     }
 }

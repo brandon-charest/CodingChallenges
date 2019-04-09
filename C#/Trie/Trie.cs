@@ -11,12 +11,12 @@ namespace Trie
     {
         public IEnumerable<T> Retrieve(string query)
         {
-            throw new NotImplementedException();
+            return Retrieve(query, 0);
         }
 
-        public void add(string key, T value)
+        public void Add(string key, T value)
         {
-            throw new NotImplementedException();
+            Add(key, 0, value);
         }
     }
 }

@@ -8,20 +8,58 @@ namespace Trie
 {
     public class Node<T> : NodeBase<T>
     {
-        protected override int KeyLength { get; }
+        private readonly Dictionary<char, Node<T>> _childrenDictionary;
+        private readonly Queue<T> _valuesQueue;
+
+        protected Node()
+        {
+            _childrenDictionary = new Dictionary<char, Node<T>>();
+            _valuesQueue = new Queue<T>();
+        }
+
+
+        protected override int KeyLength => 1;
+
         protected override IEnumerable<T> Values()
         {
-            throw new NotImplementedException();
+            return _valuesQueue;
         }
 
         protected override IEnumerable<NodeBase<T>> Children()
         {
-            throw new NotImplementedException();
+            return _childrenDictionary.Values;
         }
 
         protected override void AddValue(T value)
         {
-            throw new NotImplementedException();
+            _valuesQueue.Enqueue(value);
+        }
+
+        protected override NodeBase<T> GetOrCreateChild(char key)
+        {
+            Node<T> result;
+            if (_childrenDictionary.TryGetValue(key, out result))
+            {
+                return result;
+            }
+
+            result = new Node<T>();
+            _childrenDictionary.Add(key, result);
+
+            return result;
+        }
+
+        protected override NodeBase<T> GetChildOrNull(string query, int position)
+        {
+            if (query == null)
+            {
+                throw  new ArgumentNullException(nameof(query));
+            }
+
+            Node<T> childNode;
+            return _childrenDictionary.TryGetValue(query[position], out childNode) 
+                ? childNode 
+                : null;
         }
     }
 }
