@@ -70,7 +70,7 @@ class BinarySearchTree(object):
             self._preorder(node.left)
             self._preorder(node.right)
 
-    def print(self):
+    def print_tree(self):
         print(self.root)
 
 
@@ -81,4 +81,4 @@ if __name__ == "__main__":
     for e in elements:
         tree.insert(e)
 
-    tree.print()
+    tree.print_tree()
