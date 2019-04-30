@@ -1,11 +1,25 @@
 class Node(object):
-    def __init__(self, data):
+    def __init__(self, data="$", left=None, right=None):
         self.data = data
-        self.left = None
-        self.right = None
+        self.left = left
+        self.right = right
+
+    def __bool__(self):
+        return self.data != "$"
 
     def __str__(self):
-        return f"Node[Data={self.data}]"
+        buf, out = [self], []
+        while buf:
+            out.append("{}".format([node.data for node in buf]))
+            if any(node for node in buf):
+                children = []
+                for node in buf:
+                    for subnode in (node.left, node.right):
+                        children.append(subnode if subnode else Node())
+                buf = children
+            else:
+                break
+        return "\n".join(out)
 
 
 class BinarySearchTree(object):
@@ -35,23 +49,36 @@ class BinarySearchTree(object):
             self._preorder(self.root)
 
     def _inorder(self, node):
-        pass
+        if node is None:
+            return
+        self._inorder(node.left)
+        print(node.data)
+        self._inorder(node.right)
 
     def _postorder(self, node):
-        pass
+        if node is None:
+            return
+        self._preorder(node.left)
+        self._preorder(node.right)
+        print(node.data)
 
     def _preorder(self, node):
         if node is None:
             return
         else:
-            print(node.data)
+            print(node.data, end=" ")
             self._preorder(node.left)
             self._preorder(node.right)
 
+    def print(self):
+        print(self.root)
 
-tree = BinarySearchTree()
-elements = [1,9,4,3,5,7,10,0]
 
-for e in elements:
-    tree.insert(e)
-tree.traversal()
+if __name__ == "__main__":
+    tree = BinarySearchTree()
+    elements = [27,14,35,10,19,31,42]
+
+    for e in elements:
+        tree.insert(e)
+
+    tree.print()
