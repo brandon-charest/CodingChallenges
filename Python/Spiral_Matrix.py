@@ -31,7 +31,7 @@ class SpiralOrder:
 
         result = []
 
-        if matrix is []:
+        if matrix is [] or len(matrix) is 0:
             return result
 
         right = len(matrix[0]) - 1
