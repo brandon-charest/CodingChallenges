@@ -9,7 +9,7 @@ def reverse_words(s: str) -> str:
             result += temp[::-1] + ' '
             temp =''
     result += temp[::-1]
-    return result.rstrip()
+    return result
 
 
 
