@@ -23,6 +23,7 @@ class SinglyLinkedList:
         while current:
             print(current.data, "->", end=' ')
             current = current.get_next()
+        print()
 
     def is_empty(self):
         return self._head is None
