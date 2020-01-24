@@ -29,5 +29,21 @@ def permute_recursive(nums: List[int]) -> List[List[int]]:
     return res
 
 
+# replace recursion with stack
+def premute_iterative(nums: List[int]) -> List[List[int]]:
+    stack = nums
+    res = [stack.pop()]
+    while len(stack) != 0:
+        temp = stack.pop()
+        temp_res = []
+        for r in res:
+            for i in range(len(r) + 1):
+                temp_res.append(r[:i] + temp + r[i:])
+        res = temp_res
+
+    return res
+
+
+
 x = [1, 2, 3]
-print(permute_recursive(x))
+print(premute_iterative(x))
