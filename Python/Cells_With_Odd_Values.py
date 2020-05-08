@@ -60,10 +60,9 @@ def odd_cells_np(n: int, m: int, indices: List[List[int]]) -> int:
     print(matrix)
     return np.count_nonzero(matrix % 2 == 1)
 
+
 x = set()
-x.
 
 print(odd_cells(2,3,[[0,1], [1,1]]))
 print(odd_cells(2,2,[[0,0], [1,1]]))
-
 print(odd_cells_np(2,3,[[0,1], [1,1]]))
